@@ -7,7 +7,37 @@
 </head>
 
 <body>
-    <h1>Contact</h1>
+    <h2>Contact me</h2>
+    {{#if isSent}}
+        <div class="isSent">
+            The message has been sent!
+            File {{originalname}} has been saved!
+        </div>
+    {{/if}}
+
+    {{#if isError}}
+        <div class="isError">
+            You cannot leave fields empty!
+        </div>
+    {{/if}}
+<form action="./contact/send-message" method="POST" enctype="multipart/form-data">
+  <label>
+    Your name: <input type="text" name="author">
+  </label>
+  <label>
+    Your email: <input type="email" name="sender">
+  </label>
+  <label>
+    Title: <input type="text" name="title">
+  </label>
+    <label>
+      Project design: <input type="file" accept=".png,.jpg,.jpeg,.gif" name="fileName">
+  </label>
+   <label>
+    Message: <textarea name="message"></textarea>
+  </label>
+  <button type="submit">Send message</button>
+</form>
 </body>
 
 </html>
